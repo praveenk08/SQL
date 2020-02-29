@@ -1,0 +1,44 @@
+
+************************************************  Method #1:  ************************************************
+
+If you want to keep the row with the lowest id value:
+
+DELETE n1 FROM wbscvet n1, wbscvet n2 WHERE n1.userid > n2.userid AND n1.mobileno = n2.mobileno
+
+If you want to keep the row with the highest id value:
+
+DELETE n1 FROM wbscvet n1, wbscvet n2 WHERE n1.userid < n2.userid AND n1.mobileno = n2.mobileno
+
+************************************************  Method #2: ************************************************
+
+DELETE t1 FROM wbscvet t1 
+INNER JOIN wbscvet t2 ON t2.userid > t1.userid AND t1.mobileno = t2.mobileno
+
+
+DELETE t1 FROM wbscvet t1 
+INNER JOIN wbscvet t2 ON t2.userid < t1.userid AND t1.mobileno = t2.mobileno
+
+************************************************ Method #3: ************************************************
+DELETE FROM wbscvet
+WHERE userid NOT IN (
+    SELECT * 
+    FROM (
+        SELECT MIN(userid)
+        FROM wbscvet
+        GROUP BY mobileno
+    ) temp
+)
+
+DELETE FROM wbscvet
+WHERE userid NOT IN (
+    SELECT * 
+    FROM (
+        SELECT MAX(userid)
+        FROM wbscvet
+        GROUP BY mobileno
+    ) temp
+)
+
+
+
+
