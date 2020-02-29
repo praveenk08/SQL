@@ -1,5 +1,5 @@
-
-************************************************  Method #1:  ************************************************
+====================  Remove All Duplicate Rows Except One In SQL? ==========================================
+************************************************  Method #1:  ***********************************************
 
 If you want to keep the row with the lowest id value:
 
@@ -39,6 +39,14 @@ WHERE userid NOT IN (
     ) temp
 )
 
+************************************************ Select All Duplicate Rows: ************************************************
+SELECT email, count(id) as e FROM main_listing
+GROUP BY email HAVING e > 1
 
-
-
+************************************************ 3rd highest record in sql: ************************************************
+SELECT *
+  FROM events one1
+  WHERE ( 3 ) = ( SELECT COUNT( one2.id )
+                  FROM events one2
+                  WHERE one2.id >= one1.id
+                )
