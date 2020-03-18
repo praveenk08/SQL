@@ -54,6 +54,11 @@ SELECT *
                 
                 
 *******************************************    Fetch last 3 months record in MySQL *****************************************
-
+1ST Query
 select action_datetime as logdate from activity_log where action_datetime >= now()-interval 3 month
+
+2ND Query
+SELECT  action_datetime as logdate 
+FROM activity_log
+WHERE action_datetime >= DATE_FORMAT(CURDATE(), '%Y-%m-01') - INTERVAL 2 MONTH
 
