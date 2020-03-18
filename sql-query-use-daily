@@ -50,3 +50,10 @@ SELECT *
                   FROM events one2
                   WHERE one2.id >= one1.id
                 )
+                
+                
+                
+*******************************************    Fetch last 3 months record in MySQL *****************************************
+
+select action_datetime as logdate from activity_log where action_datetime >= now()-interval 3 month
+
