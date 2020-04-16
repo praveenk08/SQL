@@ -1,0 +1,14 @@
+ 
+ //Find duplicate records across one-to-many relationship tables
+ // 
+ 
+ id | person_id | first_name | first_name
+----+-----------+-----------+-------------
+  1 |         1 | Praveen 	| Kumar
+  2 |         1 | Esther  	| Praveen
+  3 |         2 | Praveen 	| Brown
+  4 |         2 | Esther  	| Praveen
+  5 |         3 | Praveen 	| Kumar
+
+
+select first_name,first_name,count(*) from mapping_users group by first_name,first_name having ( count(*) > 1 )
