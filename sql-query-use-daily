@@ -39,6 +39,10 @@ WHERE userid NOT IN (
     ) temp
 )
 
+************************************************ Calculate age based on date of birth in MySQL: ************************************************
+
+SELECT DATE_FORMAT( FROM_DAYS( DATEDIFF(CURRENT_DATE, age) ), '%y Years %m Months %d Days' ) AS age FROM table_name 
+
 ************************************************ Select All Duplicate Rows: ************************************************
 SELECT email, count(id) as e FROM main_listing
 GROUP BY email HAVING e > 1
